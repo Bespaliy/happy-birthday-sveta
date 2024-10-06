@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700,700i');
-
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,400i');
 
 *, *:before, *:after {
     margin: 0;
@@ -14,10 +13,25 @@ html {
 }
 
 body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Ubuntu', sans-serif;
     color: #6e6e6e;
     font-size: 1.6rem;
-    background: black;
+    background: white;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    img {
+        height: 300px;
+        object-fit: contain;
+    }
 }
 
 header, footer {
@@ -42,10 +56,9 @@ ul {
 }
 
 .holder {
-    margin: 12rem auto 0;
-    width: 150px;
-    height: 400px;
     position: relative;
+    left: 130px;
+    top: 30px;
 }
 
 .holder *, .holder *:before, .holder *:after {
@@ -55,8 +68,6 @@ ul {
 
 .candle {
     bottom: 0;
-    width: 55px;
-    height: 300px;
     border-radius: 150px / 100px;
     box-shadow: inset 20px -30px 50px 0 rgba(0, 0, 0, 0.4), inset -20px 0 50px 0 rgba(0, 0, 0, 0.4);
     background: #190f02;
@@ -67,34 +78,6 @@ ul {
     background: linear-gradient(#e48825, #e78e0e, #833c03, #4c1a03 50%, #1c0900);
 }
 
-.candle:before {
-    width: 100%;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid #d47401;
-    background: #b86409;
-    background: -moz-radial-gradient(#eaa121, #8e4901 45%, #b86409 80%);
-    background: -webkit-radial-gradient(#eaa121, #8e4901 45%, #b86409 80%);
-    background: -o-radial-gradient(#eaa121, #8e4901 45%, #b86409 80%);
-    background: -ms-radial-gradient(#eaa121, #8e4901 45%, #b86409 80%);
-    background: radial-gradient(#ffef80, #b86409 60%);
-    background: radial-gradient(#eaa121, #8e4901 45%, #b86409 80%);
-}
-
-.candle:after {
-    width: 34px;
-    height: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    top: 14px;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
-    background: -moz-radial-gradient(rgba(0, 0, 0, 0.6), transparent 45%);
-    background: -webkit-radial-gradient(rgba(0, 0, 0, 0.6), transparent 45%);
-    background: -o-radial-gradient(rgba(0, 0, 0, 0.6), transparent 45%);
-    background: -ms-radial-gradient(rgba(0, 0, 0, 0.6), transparent 45%);
-    background: radial-gradient(rgba(0, 0, 0, 0.6), transparent 45%);
-}
 
 .thread {
     width: 6px;
@@ -246,3 +229,19 @@ ul {
     50% { opacity: .8;}
 }
 
+.cake {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90%;
+
+    img {
+        height: 300px;
+        object-fit: contain;
+    }
+}
+
+
+.handler {
+    position: absolute;
+}

@@ -18,7 +18,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
 
             if (!flameElement) return;
 
-            if (average > 100) { // Adjust this threshold as needed
+            if (average > 50) { // Adjust this threshold as needed
                 // If a strong blow is detected
                 if (average > 115) { // Check for hard blow
 
