@@ -56,27 +56,17 @@ ul {
 }
 
 .holder {
-    position: relative;
-    left: 130px;
-    top: 30px;
+position: relative;
+    top: 378px;
+    left: 2px;
 }
+
 
 .holder *, .holder *:before, .holder *:after {
     position: absolute;
     content: "";
 }
 
-.candle {
-    bottom: 0;
-    border-radius: 150px / 100px;
-    box-shadow: inset 20px -30px 50px 0 rgba(0, 0, 0, 0.4), inset -20px 0 50px 0 rgba(0, 0, 0, 0.4);
-    background: #190f02;
-    background: -moz-linear-gradient(#e48825, #e78e0e, #833c03, #4c1a03 50%, #1c0900);
-    background: -webkit-linear-gradient(#e48825, #e78e0e, #833c03, #4c1a03 50%, #1c0900);
-    background: -o-linear-gradient(#e48825, #e78e0e, #833c03, #4c1a03 50%, #1c0900);
-    background: -ms-linear-gradient(#e48825, #e78e0e, #833c03, #4c1a03 50%, #1c0900);
-    background: linear-gradient(#e48825, #e78e0e, #833c03, #4c1a03 50%, #1c0900);
-}
 
 
 .thread {
@@ -233,7 +223,7 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 90%;
+    margin-top: 150%;
 
     img {
         height: 300px;
