@@ -1,58 +1,50 @@
-const candle = document.getElementById('candle');
-const flame = document.getElementById('flame');
-const congratulations = document.getElementById('congratulations');
-const blowoutSound = document.getElementById('blowout-sound');
-let blowing = false;
-let blowDuration = 0;
-let blowTimeout;
+navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(function(stream) {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const analyser = audioContext.createAnalyser();
+        const microphone = audioContext.createMediaStreamSource(stream);
+        microphone.connect(analyser);
+        analyser.fftSize = 256; // Size of the FFT for frequency analysis
 
-const startListening = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const analyser = audioContext.createAnalyser();
-    const microphone = audioContext.createMediaStreamSource(stream);
-    microphone.connect(analyser);
+        const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
-    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+        // Function to detect blow
+        function detectBlow() {
+            analyser.getByteFrequencyData(dataArray);
+            const total = dataArray.reduce((acc, val) => acc + val, 0);
+            const average = total / dataArray.length;
 
-    const checkVolume = () => {
-        analyser.getByteFrequencyData(dataArray);
-        const volume = dataArray.reduce((sum, value) => sum + value) / dataArray.length;
+            const flameElement = document.querySelector('.flame');
 
-        if (volume > 50) { // Arbitrary threshold for blowing
-            if (!blowing) {
-                blowing = true;
-                blowDuration = 0; // Reset blow duration on first blow
-                blowTimeout = setInterval(() => {
-                    blowDuration += 100; // Increase duration with time
-                }, 100);
+            if (!flameElement) return;
+
+            if (average > 100) { // Adjust this threshold as needed
+                // If a strong blow is detected
+                if (average > 115) { // Check for hard blow
+
+                    console.log(average)
+                    flameElement.classList.remove('blowing', 'reverse'); // Ensure other classes are removed
+                    flameElement.classList.add('extinguish'); // Extinguish the flame
+                    flameElement.style.animation = 'extinguishFlame 0.5s forwards';
+                    flameElement.remove();
+                    document.querySelector('.glow')?.remove();
+                    document.querySelector('.blinking-glow')?.remove();
+                } else {
+                    // If blow is detected, scale down the flame
+                    flameElement.classList.add('blowing'); // Start blowing animation
+                    flameElement.classList.remove('reverse', 'extinguish'); // Ensure other classes are removed
+                }
+            } else {
+                // Reset the flame size
+                flameElement.classList.remove('blowing', 'extinguish'); // Stop current animations
+                flameElement.classList.add('reverse'); // Reverse animation to go back to original height
             }
-        } else {
-            if (blowing) {
-                clearInterval(blowTimeout);
-                blowing = false;
-            }
+
+            requestAnimationFrame(detectBlow); // Repeat the detection
         }
 
-        if (blowing && blowDuration >= 3000) { // 3 seconds to blow out the candle
-            blowOutCandle();
-        }
-
-        requestAnimationFrame(checkVolume);
-    };
-
-    checkVolume();
-};
-
-const blowOutCandle = () => {
-    blowoutSound.play(); // Play blowout sound
-    flame.classList.add('candle-out');
-    congratulations.classList.add('show');
-    setTimeout(() => {
-        alert("Joe, you're amazing! Keep smiling!");
-        window.location.reload(); // Restart the game after blowing out the candle
-    }, 1000); // Wait for the animation to finish
-};
-
-// Start listening for microphone input
-startListening();
+        detectBlow(); // Start detecting
+    })
+    .catch(function(err) {
+        console.error('Error accessing microphone:', err);
+    });

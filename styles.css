@@ -55,9 +55,9 @@ ul {
 
 .candle {
     bottom: 0;
-    width: 150px;
+    width: 55px;
     height: 300px;
-    border-radius: 150px / 40px;
+    border-radius: 150px / 100px;
     box-shadow: inset 20px -30px 50px 0 rgba(0, 0, 0, 0.4), inset -20px 0 50px 0 rgba(0, 0, 0, 0.4);
     background: #190f02;
     background: -moz-linear-gradient(#e48825, #e78e0e, #833c03, #4c1a03 50%, #1c0900);
@@ -112,22 +112,73 @@ ul {
     background: linear-gradient(#d6994a, #4b232c, #121212, black, #e8bb31 90%);
 }
 
+@keyframes extinguishFlame {
+    0% {
+        height: 60px; /* Starting height when blow is detected */
+        opacity: 1; /* Fully visible */
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)); /* Initial glow */
+    }
+    50% {
+        opacity: 0.5; /* Fade out */
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1)); /* Increase glow */
+    }
+    100% {
+        height: 0; /* Flame height goes to 0 */
+        opacity: 0; /* Fully faded out */
+        filter: none; /* No glow */
+    }
+}
+
+@keyframes blowFlame {
+    0% {
+        height: 120px;
+    }
+    50% {
+        height: 90px; /* Decrease height during blow */
+    }
+    100% {
+        height: 60px;
+    }
+}
+
+@keyframes reverseBlowFlame {
+    0% {
+        height: 60px; /* Starting from blown height */
+    }
+    100% {
+        height: 120px; /* Return to original height */
+    }
+}
+
 .flame {
     width: 24px;
-    height: 120px;
+    height: 120px; /* Initial height */
     left: 50%;
     transform-origin: 50% 100%;
     transform: translateX(-50%);
     bottom: 100%;
     border-radius: 50% 50% 20% 20%;
     background: rgba(255, 255, 255, 1);
-    background: -moz-linear-gradient(white 80%, transparent);
-    background: -webkit-linear-gradient(white 80%, transparent);
-    background: -o-linear-gradient(white 80%, transparent);
-    background: -ms-linear-gradient(white 80%, transparent);
     background: linear-gradient(white 80%, transparent);
     animation: moveFlame 6s linear infinite, enlargeFlame 5s linear infinite;
+    transition: height 0.3s ease-in-out; /* Smooth transition for height */
 }
+
+/* Class for blowing */
+.blowing {
+    animation: blowFlame 1s forwards; /* Adjust duration for smoother effect */
+}
+
+/* Class for reverse animation */
+.reverse {
+    animation: reverseBlowFlame 1s forwards; /* Adjust duration for smoother effect */
+}
+
+/* Class for extinguishing the flame */
+.extinguish {
+    animation: extinguishFlame 0.5s forwards; /* Extinguish effect */
+}
+
 
 .flame:before {
     width: 100%;
