@@ -13,13 +13,13 @@ html {
 }
 
 body {
+    background-color: #FFFAE5;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Ubuntu', sans-serif;
     color: #6e6e6e;
     font-size: 1.6rem;
-    background: white;
 }
 
 .header {
@@ -29,7 +29,7 @@ body {
     position: absolute;
     top: 0;
     img {
-        height: 300px;
+        height: 400px;
         object-fit: contain;
     }
 }
@@ -57,7 +57,7 @@ ul {
 
 .holder {
 position: relative;
-    top: 378px;
+    top: 450px;
     left: 2px;
 }
 
@@ -78,11 +78,6 @@ position: relative;
     border-radius: 40% 40% 0 0;
     transform: translateX(-50%);
     background: #121212;
-    background: -moz-linear-gradient(#d6994a, #4b232c, #121212, black, #e8bb31 90%);
-    background: -webkit-linear-gradient(#d6994a, #4b232c, #121212, black, #e8bb31 90%);
-    background: -o-linear-gradient(#d6994a, #4b232c, #121212, black, #e8bb31 90%);
-    background: -ms-linear-gradient(#d6994a, #4b232c, #121212, black, #e8bb31 90%);
-    background: linear-gradient(#d6994a, #4b232c, #121212, black, #e8bb31 90%);
 }
 
 @keyframes extinguishFlame {
@@ -137,6 +132,13 @@ position: relative;
     transition: height 0.3s ease-in-out; /* Smooth transition for height */
 }
 
+.flame:before {
+    width: 100%;
+    height: 100%;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 15px 0 rgba(247, 93, 0, .4), 0 -6px 4px 0 rgba(247, 128, 0, .7);
+}
+
 /* Class for blowing */
 .blowing {
     animation: blowFlame 1s forwards; /* Adjust duration for smoother effect */
@@ -152,13 +154,15 @@ position: relative;
     animation: extinguishFlame 0.5s forwards; /* Extinguish effect */
 }
 
-
-.flame:before {
+canvas {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    position: absolute;
     width: 100%;
-    height: 100%;
-    border-radius: 50% 50% 20% 20%;
-    box-shadow: 0 0 15px 0 rgba(247, 93, 0, .4), 0 -6px 4px 0 rgba(247, 128, 0, .7);
+    margin: 0;
+    height: 110vh;
 }
+
 
 @keyframes moveFlame {
     0%, 100% {
@@ -223,7 +227,7 @@ position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 150%;
+    margin-top: 180%;
 
     img {
         height: 300px;
