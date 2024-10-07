@@ -101,9 +101,9 @@ navigator.mediaDevices.getUserMedia({ audio: true })
 
             if (!flameElement) return;
 
-            if (average > 50) { // Adjust this threshold as needed
+            if (average > 40) { // Adjust this threshold as needed
                 // If a strong blow is detected
-                if (average > 60) { // Check for hard blow
+                if (average > 50) { // Check for hard blow
 
                     console.log(average)
                     flameElement.classList.remove('blowing', 'reverse'); // Ensure other classes are removed
