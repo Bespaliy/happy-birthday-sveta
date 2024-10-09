@@ -101,11 +101,10 @@ navigator.mediaDevices.getUserMedia({ audio: true })
 
             if (!flameElement) return;
 
-            if (average > 40) { // Adjust this threshold as needed
+            if (average > 60) { // Adjust this threshold as needed
                 // If a strong blow is detected
-                if (average > 50) { // Check for hard blow
+                if (average > 100) { // Check for hard blow
 
-                    console.log(average)
                     flameElement.classList.remove('blowing', 'reverse'); // Ensure other classes are removed
                     flameElement.classList.add('extinguish'); // Extinguish the flame
                     flameElement.style.animation = 'extinguishFlame 0.5s forwards';
@@ -127,6 +126,8 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                     }
                     canvas.width = W;
                     canvas.height = H;
+                    const audio = document.getElementById('birthdayAudio');
+                    audio.play();
                     Draw();
                 } else {
                     // If blow is detected, scale down the flame

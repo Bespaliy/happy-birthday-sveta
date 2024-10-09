@@ -239,3 +239,7 @@ canvas {
 .handler {
     position: absolute;
 }
+
+.audio {
+    display: none;
+}
