@@ -27,7 +27,7 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: -30px;
+    top: -2vh;
     img {
         height: 400px;
         object-fit: contain;
