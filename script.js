@@ -169,18 +169,12 @@ var select = function(el) {
     stem_4 = select("tige-3"),
     head = select("head"),
     face = select("face"),
-    leaf_group_1 = select("leaf-group-1"),
     leaf_group_2 = select("leaf-group-2"),
     leaf_group_3 = select("leaf-group-3"),
-    leaf_group_4 = select("leaf-group-4"),
-    leaf_stem_1 = select("leaf-stem-1"),
     leaf_stem_2 = select("leaf-stem-2"),
     leaf_stem_3 = select("leaf-stem-3"),
-    leaf_stem_4 = select("leaf-stem-4"),
-    leaf_1 = select("leaf-1"),
     leaf_2 = select("leaf-2"),
-    leaf_3 = select("leaf-3"),
-    leaf_4 = select("leaf-4");
+    leaf_3 = select("leaf-3");
 
 
 function happyGo(){
@@ -188,13 +182,6 @@ function happyGo(){
     gsap.to("svg", { visibility: "visible" });
     var tlHappy = new TimelineMax();
     tlHappy
-        .to(
-            leaf_stem_1,
-            0.3,
-            { attr: { x2: 250, y2: 340 }, transformOrigin: "50% 50%" },
-            "one"
-        )
-        .to(leaf_1, 0.3, { x: -15, y: -7 }, "one")
         .to(
             leaf_stem_2,
             0.3,
@@ -225,12 +212,6 @@ function timelineInit() {
         rotation: 0,
         transformOrigin: "center bottom"
     });
-    gsap.to(leaf_group_1, {
-        y: 0,
-        x: 0,
-        rotation: 0,
-        transformOrigin: "right bottom"
-    });
     gsap.to(leaf_group_2, {
         y: 0,
         x: 0,
@@ -243,22 +224,12 @@ function timelineInit() {
         rotation: 0,
         transformOrigin: "left bottom"
     });
-    gsap.to(leaf_group_4, {
-        y: 0,
-        x: 0,
-        rotation: 0,
-        transformOrigin: "left bottom"
-    });
     gsap.to(head, { y: 0 });
     gsap.to(face, { x: 0, y: 0 });
-    gsap.to(leaf_stem_1, { attr: { x2: 289, y2: 360 } });
     gsap.to(leaf_stem_2, { attr: { x2: 287.2, y2: 287 } });
     gsap.to(leaf_stem_3, { attr: { x2: 313.3, y2: 278.1 } });
-    gsap.to(leaf_stem_4, { attr: { x2: 312.6, y2: 351.2 } });
-    gsap.to(leaf_1, { x: 0, y: 0 });
     gsap.to(leaf_2, { x: 0, y: 0 });
     gsap.to(leaf_3, { x: 0, y: 0 });
-    gsap.to(leaf_4, { x: 0, y: 0 });
     gsap.to(stem_1, {
         attr: { d: "M300.8,398.4c0,0,2.1-60.3,1.7-80.3c-0.5-23-6.2-92-6.2-92" }
     });
@@ -278,20 +249,6 @@ function happy2() {
             "two+=0.5"
         )
         .to(leaf_3, 0.3, { x: 15, y: -7 }, "two+=0.5")
-        .to(
-            leaf_stem_4,
-            0.3,
-            { attr: { x2: 340, y2: 337 }, transformOrigin: "50% 50%" },
-            "two+=0.5"
-        )
-        .to(leaf_4, 0.3, { x: 15, y: -7 }, "two+=0.5")
-        .to(
-            leaf_stem_1,
-            0.3,
-            { attr: { x2: 289, y2: 360 }, transformOrigin: "50% 50%" },
-            "two+=0.5"
-        )
-        .to(leaf_1, 0.3, { x: -2, y: 0 }, "two+=0.5")
         .to(
             leaf_stem_2,
             0.3,
@@ -324,20 +281,6 @@ function happy2() {
             "three+=0.5"
         )
         .to(leaf_3, 0.3, { x: 0, y: 0 }, "three+=0.5")
-        .to(
-            leaf_stem_4,
-            0.3,
-            { attr: { x2: 312.6, y2: 351.2 }, transformOrigin: "50% 50%" },
-            "three+=0.5"
-        )
-        .to(leaf_4, 0.3, { x: 0, y: 0 }, "three+=0.5")
-        .to(
-            leaf_stem_1,
-            0.3,
-            { attr: { x2: 250, y2: 340 }, transformOrigin: "50% 50%" },
-            "three+=0.5"
-        )
-        .to(leaf_1, 0.3, { x: -15, y: -7 }, "three+=0.5")
         .to(
             leaf_stem_2,
             0.3,
