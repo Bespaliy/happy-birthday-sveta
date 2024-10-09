@@ -23,11 +23,11 @@ body {
 }
 
 .header {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 0;
+    top: -30px;
     img {
         height: 400px;
         object-fit: contain;
@@ -228,6 +228,8 @@ canvas {
     justify-content: center;
     align-items: center;
     margin-top: 180%;
+    position: relative;
+    z-index: -1;
 
     img {
         height: 300px;
@@ -242,4 +244,49 @@ canvas {
 
 .audio {
     display: none;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background-color: #ffeaf1;
+}
+.flower {
+    display: none;
+    position: absolute;
+    /*display: flex;*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+svg {
+    width:600px;
+    height: 600px;
+}
+
+.show {
+    display: flex;
+
+}
+
+.hidden {
+    display: none;
+
+}
+
+button:last-child {
+    margin-right: 0;
+}
+button:focus {
+    outline: none;
+    border: 0;
+}
+
+.top-30 {
+    top: -30px;
 }
